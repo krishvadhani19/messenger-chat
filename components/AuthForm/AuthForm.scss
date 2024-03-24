@@ -1,0 +1,9 @@
+$sm-min-width: 640px;
+
+.auth-form-container {
+    @media (max-width: $sm-min-width) {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 28rem;
+    }
+}

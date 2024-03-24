@@ -1,0 +1,37 @@
+$sm-min-width: 640px;
+$md-min-width: 768px;
+$lg-min-width: 1024px;
+$xl-min-width: 1280px;
+$xl2-min-width: 1536px;
+
+.main-container {
+    background-color: #f3f4f6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    padding: 3rem;
+
+    .main-container-logo {
+        margin: 0 auto;
+        width: auto;
+    }
+
+    .main-container-signin-button {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        letter-spacing: -0.025em;
+        color: #111827;
+    }
+
+    @media (max-width: $sm-min-width) {
+        padding: 0 1.5rem;
+    }
+
+    @media (max-width: $lg-min-width) {
+        padding: 0 2rem;
+    }
+}
