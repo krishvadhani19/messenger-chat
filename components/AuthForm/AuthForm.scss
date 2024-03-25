@@ -1,9 +1,22 @@
 $sm-min-width: 640px;
 
 .auth-form-container {
-    @media (max-width: $sm-min-width) {
+    @media (min-width: $sm-min-width) {
         margin: 0 auto;
         width: 100%;
         max-width: 28rem;
+    }
+
+    .auth-form-input-field {
+        background-color: #fff;
+        padding: 2rem 1rem;
+        box-shadow:
+            0 1px 3px 0 rgb(0 0 0 / 0.1),
+            0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+        @media (min-width: $sm-min-width) {
+            border-radius: 0.5rem;
+            padding: 1rem 2.5rem;
+        }
     }
 }

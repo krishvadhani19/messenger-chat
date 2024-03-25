@@ -1,10 +1,12 @@
 "use client";
 
+// Module Imports
 import { useCallback, useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 
 // File Imports
 import "./AuthForm.scss";
+import Input from "@/components/Input/Input";
 
 const FORM_TYPES = {
   LOGIN: "LOGIN",
@@ -16,6 +18,7 @@ const AuthForm = () => {
     FORM_TYPES.LOGIN
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [formData, setFormData] = useState({ email: "" });
 
   const toggleVariant = useCallback(() => {
     if (variant === FORM_TYPES.LOGIN) {
@@ -48,7 +51,62 @@ const AuthForm = () => {
     // SSO
   };
 
-  return <div>AuthForm</div>;
+  return (
+    <div className="auth-form-container">
+      <div className="auth-form-input-field">
+        <form className="" onSubmit={handleSubmit(onSubmit)}>
+          {/* Register */}
+          {variant === FORM_TYPES.REGISTER && (
+            <Input
+              label="Name"
+              id="name"
+              required
+              onChange={(value: string) =>
+                setFormData((prev) => ({ ...prev, email: value }))
+              }
+              value={formData?.email}
+              type="text"
+              placeholder="Enter your name"
+            />
+          )}
+
+          {/* Login */}
+          {variant === FORM_TYPES.LOGIN && (
+            <>
+              <Input
+                label="Email"
+                id="email"
+                required
+                onChange={(value: string) =>
+                  setFormData((prev) => ({ ...prev, email: value }))
+                }
+                value={formData?.email}
+                type="email"
+                placeholder="Enter your email"
+              />
+
+              <Input
+                label="Password"
+                id="password"
+                required
+                onChange={(value: string) =>
+                  setFormData((prev) => ({ ...prev, email: value }))
+                }
+                value={formData?.email}
+                type="password"
+                placeholder="Enter your password"
+              />
+
+              {/* Button */}
+              <div></div>
+            </>
+          )}
+
+          {/*  */}
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default AuthForm;
