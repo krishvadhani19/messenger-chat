@@ -7,6 +7,7 @@ import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 // File Imports
 import "./AuthForm.scss";
 import Input from "@/components/Input/Input";
+import Button from "../Button/Button";
 
 const FORM_TYPES = {
   LOGIN: "LOGIN",
@@ -53,58 +54,54 @@ const AuthForm = () => {
 
   return (
     <div className="auth-form-container">
-      <div className="auth-form-input-field">
-        <form className="" onSubmit={handleSubmit(onSubmit)}>
-          {/* Register */}
-          {variant === FORM_TYPES.REGISTER && (
+      <form className="auth-form-input-field" onSubmit={handleSubmit(onSubmit)}>
+        {/* Register */}
+        {variant === FORM_TYPES.REGISTER && (
+          <Input
+            label="Name"
+            id="name"
+            required
+            onChange={(value: string) =>
+              setFormData((prev) => ({ ...prev, email: value }))
+            }
+            value={formData?.email}
+            type="text"
+            placeholder="Enter your name"
+          />
+        )}
+
+        {/* Login */}
+        {variant === FORM_TYPES.LOGIN && (
+          <>
             <Input
-              label="Name"
-              id="name"
+              label="Email"
+              id="email"
               required
               onChange={(value: string) =>
                 setFormData((prev) => ({ ...prev, email: value }))
               }
               value={formData?.email}
-              type="text"
-              placeholder="Enter your name"
+              type="email"
+              placeholder="Enter your email"
             />
-          )}
 
-          {/* Login */}
-          {variant === FORM_TYPES.LOGIN && (
-            <>
-              <Input
-                label="Email"
-                id="email"
-                required
-                onChange={(value: string) =>
-                  setFormData((prev) => ({ ...prev, email: value }))
-                }
-                value={formData?.email}
-                type="email"
-                placeholder="Enter your email"
-              />
+            <Input
+              label="Password"
+              id="password"
+              required
+              onChange={(value: string) =>
+                setFormData((prev) => ({ ...prev, email: value }))
+              }
+              value={formData?.email}
+              type="password"
+              placeholder="Enter your password"
+            />
 
-              <Input
-                label="Password"
-                id="password"
-                required
-                onChange={(value: string) =>
-                  setFormData((prev) => ({ ...prev, email: value }))
-                }
-                value={formData?.email}
-                type="password"
-                placeholder="Enter your password"
-              />
-
-              {/* Button */}
-              <div></div>
-            </>
-          )}
-
-          {/*  */}
-        </form>
-      </div>
+            {/* Button */}
+            <Button fullWidth>Submit</Button>
+          </>
+        )}
+      </form>
     </div>
   );
 };

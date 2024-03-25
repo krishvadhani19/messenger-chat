@@ -1,0 +1,38 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    outline: none;
+    border: 1px solid #0ea5e9;
+    cursor: pointer;
+    color: #fff;
+    background-color: #0ea5e9;
+
+    &:hover {
+        background-color: #0284c7;
+    }
+
+    &.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    &.fullWidth {
+        width: 100%;
+    }
+
+    &.secondary {
+        color: #111827;
+    }
+
+    &.danger {
+        background-color: #f43f5e;
+
+        &:focus {
+            background-color: #e11d48;
+        }
+    }
+}
