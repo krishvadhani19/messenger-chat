@@ -32,4 +32,14 @@ a {
     --gray-800: #{$gray-800};
     --gray-900: #{$gray-900};
     --gray-950: #{$gray-950};
+
+
+    // ===================================SIZES=======================================
+    --text-xs: #{$text-xs};
+    --text-sm: #{$text-sm};
+    --text-base: #{$text-base};
+    --text-xl: #{$text-xl};
+    --text-2xl: #{$text-2xl};
+    --text-3xl: #{$text-3xl};
+    --text-4xl: #{$text-4xl};
 }
