@@ -2,6 +2,7 @@
 
 // Module Imports
 import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 
 // File Imports
 import "./AuthForm.scss";
@@ -9,11 +10,7 @@ import Input from "@/components/Input/Input";
 import Button from "../Button/Button";
 import SocialButton from "../SocialButton/SocialButton";
 import { GitHubIcon, GoogleIcon } from "../Icons";
-
-const FORM_TYPES = {
-  LOGIN: "LOGIN",
-  REGISTER: "REGISTER",
-} as const;
+import { FORM_TYPES } from "@/constants/auth-constants";
 
 const AuthForm = () => {
   const [variant, setVariant] = useState<keyof typeof FORM_TYPES>(
@@ -21,6 +18,7 @@ const AuthForm = () => {
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({ email: "" });
+  const router = useRouter();
 
   const toggleVariant = useCallback(() => {
     if (variant === FORM_TYPES.LOGIN) {
@@ -90,7 +88,9 @@ const AuthForm = () => {
           />
 
           {/* Button */}
-          <Button fullWidth onClick={()=>{}}>Continue</Button>
+          <Button fullWidth onClick={() => {}}>
+            Continue
+          </Button>
 
           {/* Continue with text */}
           <div className="auth-form-continue-with-container">
@@ -108,7 +108,10 @@ const AuthForm = () => {
 
           <div className="auth-form-login-container">
             Already have an account?
-            <span onClick={() => {}} className="auth-form-login-button">
+            <span
+              onClick={() => router.push("/signup")}
+              className="auth-form-login-button"
+            >
               Login
             </span>
           </div>
