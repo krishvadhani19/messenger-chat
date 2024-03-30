@@ -13,18 +13,22 @@ $xl2-min-width: 1536px;
     min-height: 100vh;
     padding: 3rem;
 
-    .main-container-logo {
-        margin: 0 auto;
-        width: fit-content;
-    }
-
-    .main-container-signin-button {
-        margin-top: 1.5rem;
-        text-align: center;
+    .main-container-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2rem;
+        gap: 1.5rem;
         font-size: 1.875rem;
         line-height: 2.25rem;
         letter-spacing: -0.025em;
         color: #111827;
+
+        .main-container-logo {
+            margin: 0 auto;
+            width: fit-content;
+        }
     }
 
     @media (min-width: $sm-min-width) {
