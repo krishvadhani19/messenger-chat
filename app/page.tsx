@@ -8,9 +8,9 @@ import "./page.scss";
 export default function Home() {
   return (
     <main className="main-container">
-      <div>
+      <div className="main-container-header">
         <Image src="/images/logo.png" alt="" height={48} width={48} className="main-container-logo"/>
-        <h2 className="main-container-signin-button">Sign in to your account</h2>
+        <h2>Sign in to your account</h2>
       </div>
 
       <AuthForm/>
