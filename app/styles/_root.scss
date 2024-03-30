@@ -21,6 +21,7 @@ a {
 
 :root {
     // ===================================COLORS=======================================
+    // Grays
     --gray-50: {$gray-50};
     --gray-100: #{$gray-100};
     --gray-200: #{$gray-200};
@@ -33,8 +34,11 @@ a {
     --gray-900: #{$gray-900};
     --gray-950: #{$gray-950};
 
+    // Solids
+    --white: #{$white};
 
     // ===================================SIZES=======================================
+    // Font Size
     --text-xs: #{$text-xs};
     --text-sm: #{$text-sm};
     --text-base: #{$text-base};
@@ -42,4 +46,11 @@ a {
     --text-2xl: #{$text-2xl};
     --text-3xl: #{$text-3xl};
     --text-4xl: #{$text-4xl};
+
+    // Min Width
+    --min-width-sm: #{$min-width-sm};
+    --min-width-md: #{$min-width-md};
+    --min-width-lg: #{$min-width-lg};
+    --min-width-xl: #{$min-width-xl};
+    --min-width-2xl: #{$min-width-2xl};
 }
