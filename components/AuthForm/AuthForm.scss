@@ -4,7 +4,7 @@
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   width: 25rem;
   border-radius: 0.25rem;
 
@@ -13,7 +13,7 @@
     padding: 1rem 2.5rem;
   }
 
-  .auth-form-continue-with {
+  .auth-form-continue-with-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,19 +23,19 @@
     .line {
       flex: 1;
       height: 1px;
-      background-color: var(--gray-300);
+      background-color: var(--gray-400);
       width: 100%;
       opacity: 0.6;
     }
 
     .text {
       font-weight: 400;
-      color: #6b7280;
+      color: var(--gray-400);
       font-size: var(--text-xs);
     }
   }
 
-  .socials-container {
+  .auth-form-socials-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,6 +43,24 @@
 
     .social-button-container {
       flex: 1;
+    }
+  }
+
+  .auth-form-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-400);
+    font-size: var(--text-xs);
+    cursor: default;
+
+    .auth-form-login-button {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--hover-blue);
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -90,10 +90,10 @@ const AuthForm = () => {
           />
 
           {/* Button */}
-          <Button fullWidth>Submit</Button>
+          <Button fullWidth onClick={()=>{}}>Continue</Button>
 
           {/* Continue with text */}
-          <div className="auth-form-continue-with">
+          <div className="auth-form-continue-with-container">
             <div className="line"></div>
 
             <div className="text">or continue with</div>
@@ -101,9 +101,16 @@ const AuthForm = () => {
             <div className="line"></div>
           </div>
 
-          <div className="socials-container">
+          <div className="auth-form-socials-container">
             <SocialButton icon={<GitHubIcon />} onClick={() => {}} />
             <SocialButton icon={<GoogleIcon />} onClick={() => {}} />
+          </div>
+
+          <div className="auth-form-login-container">
+            Already have an account?
+            <span onClick={() => {}} className="auth-form-login-button">
+              Login
+            </span>
           </div>
         </>
       )}
