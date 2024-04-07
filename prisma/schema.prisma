@@ -48,7 +48,7 @@ model Account{
   scope String?
   id_token String? @db.String
   session_state String?
-  
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // provider and providerAccountID needs to be unique to create an account
