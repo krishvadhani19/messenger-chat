@@ -13,29 +13,12 @@ import { FORM_TYPES } from "@/constants/auth-constants";
 import Input from "@/components/Input/Input";
 
 export default function Home() {
-  const [variant, setVariant] = useState<keyof typeof FORM_TYPES>(
-    FORM_TYPES.LOGIN
-  );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const router = useRouter();
 
-  const toggleVariant = useCallback(() => {
-    if (variant === FORM_TYPES.LOGIN) {
-      setVariant(FORM_TYPES.REGISTER);
-    } else {
-      setVariant(FORM_TYPES.LOGIN);
-    }
-  }, [variant]);
-
   const onSubmit = () => {
     setIsLoading(true);
-
-    if (variant === FORM_TYPES.REGISTER) {
-      // Axios Register}
-    } else if (variant === FORM_TYPES.LOGIN) {
-      // Next Auth SignIn
-    }
   };
 
   const socialAction = (action: string) => {
@@ -70,7 +53,7 @@ export default function Home() {
       />
 
       {/* Button */}
-      <Button fullWidth onClick={() => {}}>
+      <Button fullWidth onClick={onSubmit}>
         Continue
       </Button>
 
