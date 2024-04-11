@@ -25,13 +25,13 @@ export default function Home() {
 
   const onSubmit = () => {
     setIsLoading(true);
+    console.log({ formData });
 
-    axios.post("/api/register");
+    axios.post("/api/register", formData);
   };
 
   const socialAction = (action: string) => {
     setIsLoading(true);
-    // SSO
   };
 
   return (

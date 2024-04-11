@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { FORM_TYPES } from "@/constants/auth-constants";
 import Input from "@/components/Input/Input";
+import axios from "axios";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -19,6 +20,7 @@ export default function Home() {
 
   const onSubmit = () => {
     setIsLoading(true);
+    axios.post("/api/register", formData);
   };
 
   const socialAction = (action: string) => {
