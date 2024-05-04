@@ -1,19 +1,16 @@
 "use client";
 
 // Module Imports
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 // File Imports
 import "./page.scss";
 import Button from "@/components/Button/Button";
-import SocialButton from "@/components/SocialButton/SocialButton";
-import { GitHubIcon, GoogleIcon } from "@/components/Icons";
-import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
-import { FORM_TYPES } from "@/constants/auth-constants";
 import Input from "@/components/Input/Input";
-import axios from "axios";
 
-export default function Home() {
+const LoginPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const router = useRouter();
@@ -29,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <form className="auth-form-container">
+    <>
       <Input
         label="Email"
         id="email"
@@ -58,30 +55,8 @@ export default function Home() {
       <Button fullWidth onClick={onSubmit}>
         Continue
       </Button>
-
-      {/* Continue with text */}
-      <div className="auth-form-continue-with-container">
-        <div className="line"></div>
-
-        <div className="text">or continue with</div>
-
-        <div className="line"></div>
-      </div>
-
-      <div className="auth-form-socials-container">
-        <SocialButton icon={<GitHubIcon />} onClick={() => {}} />
-        <SocialButton icon={<GoogleIcon />} onClick={() => {}} />
-      </div>
-
-      <div className="auth-form-login-container">
-        Create new account?
-        <span
-          onClick={() => router.push("/login/signup")}
-          className="auth-form-login-button"
-        >
-          Register
-        </span>
-      </div>
-    </form>
+    </>
   );
-}
+};
+
+export default LoginPage;
