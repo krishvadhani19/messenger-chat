@@ -23,8 +23,9 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(user);
-  } catch (error) {
+  } catch (error: any) {
     //   throw new Error("Registration Error!");
+    console.log(error.message, "register error");
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
