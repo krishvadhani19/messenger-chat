@@ -1,6 +1,6 @@
-const FORM_TYPES = {
-  LOGIN: "LOGIN",
-  REGISTER: "REGISTER",
+const FORM_STATUS = {
+  ERROR: "error",
+  SUCCESS: "success",
 } as const;
 
-export { FORM_TYPES };
+export { FORM_STATUS };

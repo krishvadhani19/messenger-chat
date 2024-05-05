@@ -34,7 +34,6 @@ const SignupPage = () => {
     <>
       <Input
         label="Name"
-        id="name"
         required
         onChange={(value: string) =>
           setFormData((prev) => ({ ...prev, name: value }))
@@ -46,7 +45,6 @@ const SignupPage = () => {
 
       <Input
         label="Email"
-        id="email"
         required
         onChange={(value: string) =>
           setFormData((prev) => ({ ...prev, email: value }))
@@ -58,7 +56,6 @@ const SignupPage = () => {
 
       <Input
         label="Password"
-        id="password"
         required
         onChange={(value: string) =>
           setFormData((prev) => ({ ...prev, password: value }))

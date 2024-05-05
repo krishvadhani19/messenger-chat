@@ -1,11 +1,13 @@
 "use client";
 
+// Module Imports
+import { useId } from "react";
+
 // File Imports
 import "./Input.scss";
 
 type InputProps = {
   label: string;
-  id: string;
   required: boolean;
   onChange: any;
   value: string;
@@ -16,7 +18,6 @@ type InputProps = {
 
 const Input = ({
   label,
-  id,
   required = false,
   value,
   onChange,
@@ -24,6 +25,8 @@ const Input = ({
   type,
   disabled,
 }: InputProps) => {
+  const id = useId();
+
   const handleChange = (e: any) => {
     onChange(e?.target?.value);
   };
