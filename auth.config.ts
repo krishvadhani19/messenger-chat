@@ -1,7 +1,7 @@
 // Module Imports
 import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 // File Imports
 import { LoginSchema } from "@/server/schemas/LoginSchema";

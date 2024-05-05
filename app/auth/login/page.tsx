@@ -1,7 +1,6 @@
 "use client";
 
 // Module Imports
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -9,15 +8,16 @@ import { useState } from "react";
 import "./page.scss";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
+import { signIn } from "next-auth/react";
 
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const router = useRouter();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setIsLoading(true);
-    axios.post("/api/register", formData);
+    await signIn();
   };
 
   const socialAction = (action: string) => {

@@ -11,7 +11,7 @@ type InputProps = {
   value: string;
   disabled?: boolean;
   placeholder?: string;
-  type?: string;
+  type?: "email" | "text" | "password";
 };
 
 const Input = ({
