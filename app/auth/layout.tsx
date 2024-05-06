@@ -20,7 +20,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="main-auth-container">
       <Image
-        src="/images/logo.png"
+        src="/logo.png"
         alt=""
         height={48}
         width={48}

@@ -5,7 +5,6 @@ import { LoginSchema } from "../schemas/LoginSchema";
 import * as z from "zod";
 import { AuthError } from "next-auth";
 import { signIn } from "@/auth";
-import { prismadb } from "@/lib/prismadb";
 
 export const login = async (formData: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(formData);
@@ -21,7 +20,7 @@ export const login = async (formData: z.infer<typeof LoginSchema>) => {
     return { error: "User does not exist" };
   }
 
-  if (existingUser?.hashedPassword) {
+  if (!existingUser?.hashedPassword) {
     return { error: "Login using SSO" };
   }
 

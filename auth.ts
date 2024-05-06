@@ -6,6 +6,13 @@ import NextAuth from "next-auth";
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prismadb),
 
+  callbacks: {
+    signIn: ({ user, account }) => {
+      console.log({ user, account });
+      return true;
+    },
+  },
+
   // Use JWT as session startegy coz the database and adapter must be compatible with EDGE
   session: { strategy: "jwt" },
 

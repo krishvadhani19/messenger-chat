@@ -11,6 +11,7 @@ import Input from "@/components/Input/Input";
 import { login } from "@/server/actions/login";
 import { LoginSchema } from "@/server/schemas/LoginSchema";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState<z.infer<typeof LoginSchema>>({
@@ -23,6 +24,8 @@ const LoginPage = () => {
     message: string;
   }>({ type: undefined, message: "" });
 
+  const Router = useRouter();
+
   const onSubmit = useCallback(() => {
     startTransition(async () => {
       const loginStatus = await login(formData);
@@ -32,9 +35,12 @@ const LoginPage = () => {
       } else if (loginStatus?.success) {
         setStatus({ type: FORM_STATUS.SUCCESS, message: loginStatus?.success });
       }
+
+      setFormData({ email: "", password: "" });
+
+      Router.push("/home");
     });
-    setFormData({ email: "", password: "" });
-  }, [formData]);
+  }, [Router, formData]);
 
   return (
     <>
@@ -61,6 +67,8 @@ const LoginPage = () => {
         placeholder="Enter your password"
         disabled={isPending}
       />
+
+      {status?.type && <div>{status?.message}</div>}
 
       {/* Button */}
       <Button fullWidth onClick={onSubmit} disabled={isPending}>
