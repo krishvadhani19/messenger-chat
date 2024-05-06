@@ -78,3 +78,14 @@ model Message{
   senderId String @db.ObjectId
   sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
 }
+
+// one email can have multiple tokens
+model VerificationToken {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  email    String
+  token    String   @unique
+  expires  DateTime
+
+  // always have email, token pair unique 
+  @@unique([email, token])
+}

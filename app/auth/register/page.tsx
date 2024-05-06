@@ -76,6 +76,8 @@ const SignupPage = () => {
         placeholder="Enter your password"
       />
 
+      {status?.type && <div>{status?.message}</div>}
+
       {/* Button */}
       <Button fullWidth onClick={onSubmit}>
         Continue
