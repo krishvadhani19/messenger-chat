@@ -7,10 +7,11 @@ import {
   publicRoutes,
 } from "@/routes";
 
-export const { auth: middleware } = NextAuth(authConfig);
+const { auth: middleware } = NextAuth(authConfig);
 
 export default middleware((req) => {
   const { nextUrl } = req;
+  console.log({ nextUrl });
   const isLoggedIn = !!req.auth;
 
   const isAPIAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
