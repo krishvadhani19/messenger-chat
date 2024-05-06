@@ -1,34 +1,45 @@
 "use client";
 
 // Module Imports
-import { useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useCallback, useState, useTransition } from "react";
 
 // File Imports
 import "./page.scss";
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
+import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
+import { register } from "@/server/actions/register";
 
 const SignupPage = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isPending, setTransition] = useTransition();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
+  const [status, setStatus] = useState<{
+    type: FORM_STATUS_TYPE;
+    message: string;
+  }>();
 
-  const router = useRouter();
+  const onSubmit = useCallback(async () => {
+    const registerStatus = await register(formData);
 
-  const onSubmit = () => {
-    setIsLoading(true);
+    if (registerStatus?.error) {
+      setStatus({ type: FORM_STATUS.ERROR, message: registerStatus?.error });
+    } else if (registerStatus?.success) {
+      setStatus({
+        type: FORM_STATUS.SUCCESS,
+        message: registerStatus?.success,
+      });
+    }
 
-    axios.post("/api/register", formData);
-  };
-
-  const socialAction = (action: string) => {
-    setIsLoading(true);
-  };
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
+  }, [formData]);
 
   return (
     <>

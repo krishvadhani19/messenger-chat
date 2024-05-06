@@ -10,9 +10,7 @@ import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import { login } from "@/server/actions/login";
 import { LoginSchema } from "@/server/schemas/LoginSchema";
-import { FORM_STATUS } from "@/constants/auth-constants";
-
-type STATUS_TYPE = (typeof FORM_STATUS)[keyof typeof FORM_STATUS];
+import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState<z.infer<typeof LoginSchema>>({
@@ -21,7 +19,7 @@ const LoginPage = () => {
   });
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState<{
-    type: STATUS_TYPE | undefined;
+    type: FORM_STATUS_TYPE | undefined;
     message: string;
   }>({ type: undefined, message: "" });
 

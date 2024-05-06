@@ -41,6 +41,6 @@ export default middleware((req) => {
 
 // Optionally, don't invoke Middleware on some paths
 // This matcher is for routes where the middleware will work
-// export const config = {
-//   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-// };
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};
