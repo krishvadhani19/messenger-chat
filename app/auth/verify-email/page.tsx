@@ -11,6 +11,7 @@ import Button from "@/components/Button/Button";
 import { verifyEmail } from "@/server/actions/verify-email";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { LOGIN_PAGE } from "@/routes";
+import Alert from "@/components/Alert/Alert";
 
 const VerifyEmailPage = () => {
   const router = useRouter();
@@ -50,7 +51,7 @@ const VerifyEmailPage = () => {
         placeholder="Enter the verification code"
       />
 
-      {status?.type && <div>{status?.message}</div>}
+      {status?.type && <Alert {...status} />}
 
       {/* Button */}
       <Button fullWidth onClick={onSubmit}>

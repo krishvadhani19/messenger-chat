@@ -38,6 +38,13 @@ a {
     --white: #{$white};
     --hover-blue: #{$hover-blue};
 
+    // Accent Colors
+    --success-primary: #{$success-primary};
+    --success-secondary: #{$success-secondary};
+
+    --danger-primary: #{$danger-primary};
+    --danger-secondary: #{$danger-secondary};
+
     // ===================================SIZES=======================================
     // Font Size
     --text-xs: #{$text-xs};

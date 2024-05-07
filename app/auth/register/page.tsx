@@ -10,6 +10,7 @@ import Input from "@/components/Input/Input";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { register } from "@/server/actions/register";
 import { useRouter } from "next/navigation";
+import Alert from "@/components/Alert/Alert";
 
 const SignupPage = () => {
   const router = useRouter();
@@ -74,7 +75,7 @@ const SignupPage = () => {
         placeholder="Enter your password"
       />
 
-      {status?.type && <div>{status?.message}</div>}
+      {status?.type && <Alert {...status} />}
 
       {/* Button */}
       <Button fullWidth onClick={onSubmit}>

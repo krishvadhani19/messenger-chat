@@ -12,6 +12,7 @@ import { login } from "@/server/actions/login";
 import { LoginSchema } from "@/server/schemas/LoginSchema";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { useRouter } from "next/navigation";
+import Alert from "@/components/Alert/Alert";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState<z.infer<typeof LoginSchema>>({
@@ -20,9 +21,9 @@ const LoginPage = () => {
   });
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState<{
-    type: FORM_STATUS_TYPE | undefined;
+    type: FORM_STATUS_TYPE;
     message: string;
-  }>({ type: undefined, message: "" });
+  }>();
 
   const Router = useRouter();
 
@@ -34,11 +35,10 @@ const LoginPage = () => {
         setStatus({ type: FORM_STATUS.ERROR, message: loginStatus?.error });
       } else if (loginStatus?.success) {
         setStatus({ type: FORM_STATUS.SUCCESS, message: loginStatus?.success });
+        Router.push("/home");
       }
 
       setFormData({ email: "", password: "" });
-
-      Router.push("/home");
     });
   }, [Router, formData]);
 
@@ -68,7 +68,7 @@ const LoginPage = () => {
         disabled={isPending}
       />
 
-      {status?.type && <div>{status?.message}</div>}
+      {status?.type && <Alert {...status} />}
 
       {/* Button */}
       <Button fullWidth onClick={onSubmit} disabled={isPending}>
