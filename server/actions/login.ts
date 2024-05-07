@@ -58,4 +58,8 @@ export const login = async (formData: z.infer<typeof LoginSchema>) => {
       }
     }
   }
+
+  return {
+    success: "Login successful!",
+  };
 };

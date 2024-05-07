@@ -2,10 +2,11 @@
 
 import Button from "@/components/Button/Button";
 import { logout } from "@/server/actions/logout";
+import "./page.scss";
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Button
         onClick={async () => {
           await logout();
@@ -13,7 +14,13 @@ const HomePage = () => {
       >
         Log out
       </Button>
-    </div>
+
+      <div className="homepage-container">
+        <div className="homepage-chats-section">Chats</div>
+
+        <div className="homepage-active-chat-section">Active Chat</div>
+      </div>
+    </>
   );
 };
 
