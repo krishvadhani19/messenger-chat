@@ -9,8 +9,10 @@ import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { register } from "@/server/actions/register";
+import { useRouter } from "next/navigation";
 
 const SignupPage = () => {
+  const router = useRouter();
   const [isPending, setTransition] = useTransition();
   const [formData, setFormData] = useState({
     name: "",
@@ -34,12 +36,8 @@ const SignupPage = () => {
       });
     }
 
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-    });
-  }, [formData]);
+    router.push(`/verify-email?email=${formData?.email}`);
+  }, [formData, router]);
 
   return (
     <>

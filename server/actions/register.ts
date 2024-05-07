@@ -6,7 +6,7 @@ import { createUser, getUserByEmail } from "../controllers/user";
 import { sendVerificationToken } from "./email";
 import { render } from "@react-email/render";
 import { MessengerConfirmEmail } from "@/emails/RegisterEmail";
-import { generateVerificationToken } from "@/server/controllers/verification-token";
+import { generateVerificationToken } from "@/server/controllers/verify-email";
 
 export const register = async (formData: z.infer<typeof RegsiterSchema>) => {
   const validatedFields = RegsiterSchema.safeParse(formData);

@@ -31,4 +31,14 @@ export const generateVerificationToken = async (email: string) => {
   return newVerificationToken;
 };
 
-export const getVerificationTokenUsingEmail = (email: string) => {};
+export const getVerificationTokenUsingEmail = async (email: string) => {
+  try {
+    const verficationToken = await prismadb.verificationToken.findFirst({
+      where: { email },
+    });
+
+    return verficationToken;
+  } catch (error) {
+    return null;
+  }
+};

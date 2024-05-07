@@ -1,14 +1,27 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prismadb } from "@/lib/prismadb";
 import authConfig from "@/auth.config";
-import NextAuth from "next-auth";
+import NextAuth, { DefaultSession } from "next-auth";
+import { getUserByEmail } from "./server/controllers/user";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prismadb),
 
   callbacks: {
-    signIn: ({ user, account }) => {
+    signIn: async ({ user, account }) => {
       console.log({ user, account });
+      if (account?.provider !== "credentials") {
+        return true;
+      }
+
+      /**
+       * Credential Login must have email verified
+       */
+      const existingUser = await getUserByEmail(user?.email as string);
+      if (!existingUser?.emailVerified) {
+        return false;
+      }
+
       return true;
     },
   },

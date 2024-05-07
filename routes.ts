@@ -23,3 +23,5 @@ export const DEFAULT_LOGIN_REDIRECT = "/home";
  * Routes which start with this prefix are used for API authentication purposes
  */
 export const apiAuthPrefix: string = "/api/auth";
+
+export const LOGIN_PAGE: string = "/auth/login";
