@@ -4,6 +4,7 @@
 import useRoutes from "@/hooks/useRoutes";
 import "./ChatsSidebar.scss";
 import classNames from "classnames";
+import Link from "next/link";
 
 const ChatsSidebar = () => {
   const routes = useRoutes();
@@ -11,7 +12,8 @@ const ChatsSidebar = () => {
   return (
     <div className="chats-sidebar-container">
       {routes.map((item, key) => (
-        <div
+        <Link
+          href={item?.href}
           key={key}
           className={classNames("chats-sidebar-item", {
             isActive: item?.active,
@@ -19,7 +21,7 @@ const ChatsSidebar = () => {
           onClick={item?.onClick}
         >
           {item?.icon({ size: 22, title: item?.label })}
-        </div>
+        </Link>
       ))}
     </div>
   );

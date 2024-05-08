@@ -1,13 +1,13 @@
+// import files
+import useConversation from "./useConversation";
+import { logout } from "@/server/actions/logout";
+
 // import modules
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 import { HiChat, HiUsers } from "react-icons/hi";
 import { TbLogout } from "react-icons/tb";
 import { IconType } from "react-icons";
-
-// import files
-import useConversation from "./useConversation";
-import { logout } from "@/server/actions/logout";
 
 export interface RouteType {
   label: string;
@@ -28,7 +28,7 @@ const useRoutes = () => {
         label: "Chat",
         href: "/conversations",
         icon: HiChat,
-        onClick: async () => {},
+        onClick: () => {},
         active: pathname === "/conversations" || !!conversationId,
       },
       {

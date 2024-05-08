@@ -25,7 +25,7 @@ const LoginPage = () => {
     message: string;
   }>();
 
-  const Router = useRouter();
+  const router = useRouter();
 
   const onSubmit = useCallback(() => {
     startTransition(async () => {
@@ -35,12 +35,13 @@ const LoginPage = () => {
         setStatus({ type: FORM_STATUS.ERROR, message: loginStatus?.error });
       } else if (loginStatus?.success) {
         setStatus({ type: FORM_STATUS.SUCCESS, message: loginStatus?.success });
-        Router.push("/home");
+
+        router.push("/home");
       }
 
       setFormData({ email: "", password: "" });
     });
-  }, [Router, formData]);
+  }, [router, formData]);
 
   return (
     <>

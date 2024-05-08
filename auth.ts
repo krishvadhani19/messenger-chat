@@ -9,7 +9,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   callbacks: {
     signIn: async ({ user, account }) => {
-      console.log({ user, account });
       if (account?.provider !== "credentials") {
         return true;
       }
@@ -23,6 +22,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       return true;
+    },
+
+    jwt: async ({ token }) => {
+      const existingUser = await getUserByEmail(token?.email as string);
+
+      if (!existingUser) {
+        return token;
+      }
+
+      token.role = existingUser?.id;
+
+      return token;
+    },
+
+    session: ({ session, token }) => {
+      return session;
     },
   },
 
