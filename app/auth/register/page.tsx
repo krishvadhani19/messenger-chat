@@ -5,12 +5,12 @@ import { useCallback, useState, useTransition } from "react";
 
 // File Imports
 import "./page.scss";
-import Button from "@/components/Button/Button";
-import Input from "@/components/Input/Input";
+import Button from "@/components/ui/Button/Button";
+import Input from "@/components/ui/Input/Input";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { register } from "@/server/actions/register";
 import { useRouter } from "next/navigation";
-import Alert from "@/components/Alert/Alert";
+import Alert from "@/components/ui/Alert/Alert";
 
 const SignupPage = () => {
   const router = useRouter();

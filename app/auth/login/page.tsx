@@ -6,13 +6,13 @@ import * as z from "zod";
 
 // File Imports
 import "./page.scss";
-import Button from "@/components/Button/Button";
-import Input from "@/components/Input/Input";
+import Button from "@/components/ui/Button/Button";
+import Input from "@/components/ui/Input/Input";
 import { login } from "@/server/actions/login";
 import { LoginSchema } from "@/server/schemas/LoginSchema";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { useRouter } from "next/navigation";
-import Alert from "@/components/Alert/Alert";
+import Alert from "@/components/ui/Alert/Alert";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState<z.infer<typeof LoginSchema>>({

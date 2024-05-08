@@ -7,8 +7,8 @@ import { useRouter } from "next/navigation";
 
 // File imports
 import "./layout.scss";
-import SocialButton from "@/components/SocialButton/SocialButton";
-import { GitHubIcon, GoogleIcon } from "@/components/Icons";
+import SocialButton from "@/components/ui/SocialButton/SocialButton";
+import { GitHubIcon, GoogleIcon } from "@/components/ui/Icons";
 import { usePathname } from "next/navigation";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {

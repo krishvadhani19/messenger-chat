@@ -5,13 +5,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 
 // import files
-import Input from "@/components/Input/Input";
+import Input from "@/components/ui/Input/Input";
 import "./page.scss";
-import Button from "@/components/Button/Button";
+import Button from "@/components/ui/Button/Button";
 import { verifyEmail } from "@/server/actions/verify-email";
 import { FORM_STATUS, FORM_STATUS_TYPE } from "@/constants/auth-constants";
 import { LOGIN_PAGE } from "@/routes";
-import Alert from "@/components/Alert/Alert";
+import Alert from "@/components/ui/Alert/Alert";
 
 const VerifyEmailPage = () => {
   const router = useRouter();
