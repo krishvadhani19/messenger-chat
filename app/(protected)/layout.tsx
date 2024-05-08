@@ -1,10 +1,15 @@
 "use client";
 
-import useCurrentUser from "@/hooks/useCurrentUser";
-import { useUserStore } from "@/stores/useUserStore";
+// import modules
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 
+// import files
+import useCurrentUser from "@/hooks/useCurrentUser";
+import { useUserStore } from "@/stores/useUserStore";
+
 const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
+  const queryClient = new QueryClient();
   const user = useCurrentUser();
   const fetchUser = useUserStore((s) => s.fetchUser);
 
@@ -12,7 +17,11 @@ const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
     fetchUser(user?.email as string);
   }, []);
 
-  return <>{children}</>;
+  return (
+    <>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </>
+  );
 };
 
 export default ProtectedLayout;

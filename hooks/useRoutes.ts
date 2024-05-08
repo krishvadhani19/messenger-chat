@@ -33,10 +33,10 @@ const useRoutes = () => {
       },
       {
         label: "Users",
-        href: "/users",
+        href: "/home",
         icon: HiUsers,
         onClick: async () => {},
-        active: pathname === "/users",
+        active: pathname === "/home",
       },
       {
         label: "Logout",

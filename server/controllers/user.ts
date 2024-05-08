@@ -41,3 +41,26 @@ export const createUser = async ({
     return null;
   }
 };
+
+export const getChats = async (email: string) => {
+  if (!email) {
+    return [];
+  }
+
+  try {
+    const chats = await prismadb.user.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+      where: {
+        // NOT: {
+        email,
+        // },
+      },
+    });
+
+    return chats;
+  } catch (error) {
+    return null;
+  }
+};
