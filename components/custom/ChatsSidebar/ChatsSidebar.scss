@@ -1,0 +1,24 @@
+.chats-sidebar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+    margin: 1rem 0;
+
+    .chats-sidebar-item {
+        color: var(--gray-600);
+        background-color: var(--gray-100);
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+
+        &:hover {
+            background-color: var(--gray-300);
+        }
+
+        &.isActive {
+            color: var(--gray-950);
+        }
+    }
+}

@@ -3,10 +3,18 @@
     width: 100vw;
     height: 100vh;
 
+    .homepage-chats-sidebar {
+        width: 5%;
+        height: 100%;
+        border: 0.5px solid var(--gray-300);
+    }
+
     .homepage-chats-section {
         width: 20%;
         height: 100%;
         overflow-y: auto;
+        background-color: var(--gray-100);
+        border: 0.5px solid var(--gray-300);
     }
 
     .homepage-active-chat-section {
