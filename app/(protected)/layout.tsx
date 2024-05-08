@@ -1,7 +1,7 @@
 "use client";
 
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { UserStore, useUserStore } from "@/stores/useUserStore";
+import { useUserStore } from "@/stores/useUserStore";
 import { useEffect } from "react";
 
 const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
