@@ -53,9 +53,9 @@ export const getChats = async (email: string) => {
         createdAt: "desc",
       },
       where: {
-        // NOT: {
-        email,
-        // },
+        NOT: {
+          email,
+        },
       },
     });
 
