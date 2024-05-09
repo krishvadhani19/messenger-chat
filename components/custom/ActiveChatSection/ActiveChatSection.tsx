@@ -1,5 +1,8 @@
+import { useActiveChatStore } from "@/stores/useActiveChatStore";
+
 const ActiveChat = () => {
-  return <div>ActiveChat</div>;
+  const activeChat = useActiveChatStore((s) => s.activeChat);
+  return <div>{activeChat?.email}</div>;
 };
 
 export default ActiveChat;

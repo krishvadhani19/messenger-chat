@@ -7,9 +7,8 @@ import Link from "next/link";
 import "./ChatsSidebar.scss";
 import useRoutes from "@/hooks/useRoutes";
 import classNames from "classnames";
-import { UserStore, useUserStore } from "@/stores/useUserStore";
+import { useUserStore } from "@/stores/useUserStore";
 import Image from "next/image";
-import Button from "@/components/ui/Button/Button";
 
 const ChatsSidebar = () => {
   const routes = useRoutes();
@@ -17,13 +16,6 @@ const ChatsSidebar = () => {
 
   return (
     <>
-      <Button
-        onClick={() => {
-          console.log({ user });
-        }}
-      >
-        Hey
-      </Button>
       <div className="chats-sidebar-container">
         <div className="chat-sidebar-routes">
           {routes.map((item, key) => (

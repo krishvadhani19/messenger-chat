@@ -1,8 +1,9 @@
 import { getUserByEmail } from "@/server/controllers/user";
+import { User } from "@prisma/client";
 import { create } from "zustand";
 
 type State = {
-  user: any;
+  user: User | null;
 };
 
 type Action = {
