@@ -25,18 +25,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     jwt: async ({ token }) => {
-      const existingUser = await getUserByEmail(token?.email as string);
-
-      if (!existingUser) {
-        return token;
-      }
-
-      token.role = existingUser?.id;
-
       return token;
     },
 
     session: ({ session, token }) => {
+      if (token?.sub && session?.user) {
+        session.user.id = token?.sub as string;
+      }
+
       return session;
     },
   },

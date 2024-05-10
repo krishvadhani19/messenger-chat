@@ -2,7 +2,7 @@ import { useActiveChatStore } from "@/stores/useActiveChatStore";
 
 const ActiveChat = () => {
   const activeChat = useActiveChatStore((s) => s.activeChat);
-  return <div>{activeChat?.email}</div>;
+  return <div>{activeChat?.id}</div>;
 };
 
 export default ActiveChat;
