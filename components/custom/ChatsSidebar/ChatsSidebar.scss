@@ -17,8 +17,11 @@
             color: var(--gray-600);
             background-color: var(--gray-100);
             cursor: pointer;
-            padding: 0.25rem;
+            padding: 0.35rem;
             border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &:hover {
                 background-color: var(--gray-300);

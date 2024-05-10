@@ -43,7 +43,7 @@ const useRoutes = () => {
         href: "#",
         icon: TbLogout,
         onClick: async () => await logout(),
-        active: pathname === "/users",
+        active: pathname === "#",
       },
     ],
     [conversationId, pathname]

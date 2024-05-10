@@ -1,28 +1,36 @@
 "use client";
 
 // import modules
+import { useQuery } from "@tanstack/react-query";
 
 // import files
 import "./page.scss";
-import ChatsSection from "@/components/custom/ChatsSection/ChatsSection";
 import ActiveChatSection from "@/components/custom/ActiveChatSection/ActiveChatSection";
-import ChatsSidebar from "@/components/custom/ChatsSidebar/ChatsSidebar";
+import useCurrentUser from "@/hooks/useCurrentUser";
+import { getChats } from "@/server/controllers/user";
+import ChatList from "@/components/custom/ChatList/ChatList";
 
 const UsersPage = () => {
-  return (
-    <div className="userspage-container">
-      <div className="userspage-chats-sidebar">
-        <ChatsSidebar />
-      </div>
+  const user = useCurrentUser();
+  const { isPending, data: allUserList } = useQuery({
+    queryKey: ["all-user-list"],
+    queryFn: async () => await getChats(user?.email as string),
+  });
 
+  if (isPending) {
+    <div>Loading chats</div>;
+  }
+
+  return (
+    <>
       <div className="userspage-chats-section">
-        <ChatsSection />
+        <ChatList chatList={allUserList!} />
       </div>
 
       <div className="userspage-active-chat-section">
         <ActiveChatSection />
       </div>
-    </div>
+    </>
   );
 };
 

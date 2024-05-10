@@ -7,6 +7,8 @@ import { useEffect } from "react";
 // import files
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { useUserStore } from "@/stores/useUserStore";
+import ChatsSidebar from "@/components/custom/ChatsSidebar/ChatsSidebar";
+import "./layout.scss";
 
 const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
   const queryClient = new QueryClient();
@@ -19,7 +21,15 @@ const ProtectedLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <div className="main-container">
+          <div className="main-sidebar">
+            <ChatsSidebar />
+          </div>
+
+          {children}
+        </div>
+      </QueryClientProvider>
     </>
   );
 };
