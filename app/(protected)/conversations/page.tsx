@@ -7,14 +7,13 @@ import { useQuery } from "@tanstack/react-query";
 import "./page.scss";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import ActiveChatSection from "@/components/custom/ActiveChatSection/ActiveChatSection";
-import { getChats } from "@/server/controllers/user";
-import ChatList from "@/components/custom/ChatList/ChatList";
+import { getChats } from "@/server/actions/getChats";
 
 const ConversationsPage = () => {
   const user = useCurrentUser();
   const { isPending, data: chatList } = useQuery({
     queryKey: ["chat-list"],
-    queryFn: async () => await getChats(user?.email as string),
+    queryFn: async () => await getChats(),
   });
 
   if (isPending) {
@@ -24,7 +23,7 @@ const ConversationsPage = () => {
   return (
     <>
       <div className="conversations-chats-section">
-        <ChatList chatList={chatList!} />
+        {/* <ChatList chatList={chatList!} /> */}
       </div>
 
       <div className="conversations-active-chat-section">
