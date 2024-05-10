@@ -8,22 +8,22 @@ import ChatsSection from "@/components/custom/ChatsSection/ChatsSection";
 import ActiveChatSection from "@/components/custom/ActiveChatSection/ActiveChatSection";
 import ChatsSidebar from "@/components/custom/ChatsSidebar/ChatsSidebar";
 
-const HomePage = () => {
+const UsersPage = () => {
   return (
-    <div className="homepage-container">
-      <div className="homepage-chats-sidebar">
+    <div className="userspage-container">
+      <div className="userspage-chats-sidebar">
         <ChatsSidebar />
       </div>
 
-      <div className="homepage-chats-section">
+      <div className="userspage-chats-section">
         <ChatsSection />
       </div>
 
-      <div className="homepage-active-chat-section">
+      <div className="userspage-active-chat-section">
         <ActiveChatSection />
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default UsersPage;

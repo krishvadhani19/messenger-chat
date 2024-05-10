@@ -36,7 +36,7 @@ const LoginPage = () => {
       } else if (loginStatus?.success) {
         setStatus({ type: FORM_STATUS.SUCCESS, message: loginStatus?.success });
 
-        router.push("/home");
+        router.push("/users");
       }
 
       setFormData({ email: "", password: "" });

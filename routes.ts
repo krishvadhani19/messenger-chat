@@ -16,7 +16,7 @@ export const authRoutes: string[] = [
 /**
  * The default redirect path after logging in
  */
-export const DEFAULT_LOGIN_REDIRECT = "/home";
+export const DEFAULT_LOGIN_REDIRECT = "/users";
 
 /**
  * Prefix for API authentcation routes
