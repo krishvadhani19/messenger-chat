@@ -1,20 +1,20 @@
 "use client";
 
-// import moudles
-import { User } from "@prisma/client";
+// import modules
 
 // import files
 import ChatBoxItem from "@/components/custom/ChatBoxItem/ChatBoxItem";
+import { FullConversationType } from "@/types";
 
 interface ChatListPropType {
-  chatList: User[];
+  chatList: FullConversationType[];
 }
 
 const ChatList = ({ chatList }: ChatListPropType) => {
   return (
     <div className="chat-list-container">
-      {chatList?.map((chatItem: User, index: number) => (
-        <ChatBoxItem key={index} user={chatItem} />
+      {chatList?.map((chatItem: FullConversationType, index: number) => (
+        <ChatBoxItem key={index} chat={chatItem} />
       ))}
     </div>
   );

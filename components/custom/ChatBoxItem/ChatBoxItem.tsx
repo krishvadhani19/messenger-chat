@@ -7,33 +7,30 @@ import Image from "next/image";
 // import files
 import "./ChatBoxItem.scss";
 import { ActiveChatStore } from "@/stores/useActiveChatStore";
+import { FullConversationType } from "@/types";
 
-const ChatBoxItem = ({ user }: { user: User }) => {
+interface ChatBoxItemPropType {
+  chat: FullConversationType;
+}
+
+const ChatBoxItem = ({ chat }: ChatBoxItemPropType) => {
   const { setActiveChat } = ActiveChatStore();
 
   const handleClick = useCallback(async () => {
-    const { data: conversation }: { data: Conversation } = await axios.post(
-      "/api/conversations",
-      {
-        userId: user?.id,
-      }
-    );
+    const { data: conversation } = await axios.post("/api/conversations", {
+      userId: chat?.id,
+    });
 
     setActiveChat(conversation);
-  }, [setActiveChat, user]);
+  }, [setActiveChat, chat]);
 
   return (
     <div onClick={handleClick} className="chatboxitem-container">
       <div className="chatboxitem-image">
-        <Image
-          src={user?.image || "/logo.png"}
-          alt={`${user?.name}`}
-          width={32}
-          height={32}
-        />
+        <Image src={"/logo.png"} alt={`${chat?.name}`} width={32} height={32} />
       </div>
 
-      <div className="chatboxitem-name">{user?.name}</div>
+      <div className="chatboxitem-name">{chat?.name}</div>
     </div>
   );
 };

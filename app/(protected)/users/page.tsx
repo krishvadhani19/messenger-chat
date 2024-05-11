@@ -24,7 +24,7 @@ const UsersPage = () => {
   return (
     <>
       <div className="userspage-chats-section">
-        <ChatList chatList={allUserList!} />
+        {/* <ChatList chatList={allUserList!} /> */}
       </div>
 
       <div className="userspage-active-chat-section">
