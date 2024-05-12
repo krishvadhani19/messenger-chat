@@ -9,6 +9,7 @@ import "./ChatsSidebar.scss";
 import useRoutes from "@/hooks/useRoutes";
 import classNames from "classnames";
 import { useUserStore } from "@/stores/useUserStore";
+import { ActiveChatStore } from "@/stores/useActiveChatStore";
 
 const ChatsSidebar = () => {
   const routes = useRoutes();
@@ -24,7 +25,10 @@ const ChatsSidebar = () => {
             className={classNames("chats-sidebar-item", {
               isActive: item?.active,
             })}
-            onClick={item?.onClick}
+            onClick={() => {
+              item?.onClick();
+              ActiveChatStore().setActiveChat(null);
+            }}
           >
             {item?.icon({ size: 22, title: item?.label })}
           </Link>

@@ -8,14 +8,14 @@ import "./page.scss";
 import ActiveChatSection from "@/components/custom/ActiveChatSection/ActiveChatSection";
 import { getChats } from "@/server/actions/getChats";
 import ChatList from "@/components/custom/ChatList/ChatList";
+import { FullConversationType } from "@/types";
+import ChatBoxItem from "@/components/custom/ChatBoxItem/ChatBoxItem";
 
 const ConversationsPage = () => {
   const { isPending, data: chatList } = useQuery({
     queryKey: ["chat-list"],
     queryFn: async () => await getChats(),
   });
-
-  console.log({ chatList });
 
   if (isPending) {
     <div>Loading chats</div>;
@@ -24,7 +24,9 @@ const ConversationsPage = () => {
   return (
     <>
       <div className="conversations-chats-section">
-        <ChatList chatList={chatList!} />
+        {chatList?.map((chatItem: FullConversationType, index: number) => (
+          <ChatBoxItem key={index} chat={chatItem} />
+        ))}
       </div>
 
       <div className="conversations-active-chat-section">

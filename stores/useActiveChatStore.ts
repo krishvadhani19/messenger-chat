@@ -6,12 +6,12 @@ type State = {
 };
 
 type Action = {
-  setActiveChat: (user: Conversation) => void;
+  setActiveChat: (conversation: Conversation | null) => void;
 };
 
 export const useActiveChatStore = create<State & Action>((set) => ({
   activeChat: null,
-  setActiveChat: (conversation: Conversation) => {
+  setActiveChat: (conversation: Conversation | null) => {
     set({ activeChat: conversation });
   },
 }));

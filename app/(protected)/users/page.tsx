@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 import "./page.scss";
 import ActiveChatSection from "@/components/custom/ActiveChatSection/ActiveChatSection";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import ChatList from "@/components/custom/ChatList/ChatList";
 import { getAllUsers } from "@/server/actions/getAllUsers";
+import UserBoxItem from "@/components/custom/UserBoxItem/UserBoxItem";
 
 const UsersPage = () => {
   const user = useCurrentUser();
@@ -24,7 +24,9 @@ const UsersPage = () => {
   return (
     <>
       <div className="userspage-chats-section">
-        {/* <ChatList chatList={allUserList!} /> */}
+        {allUserList?.map((item, index) => (
+          <UserBoxItem user={item} key={index} />
+        ))}
       </div>
 
       <div className="userspage-active-chat-section">

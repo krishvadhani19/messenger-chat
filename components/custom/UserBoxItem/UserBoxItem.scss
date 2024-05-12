@@ -1,0 +1,15 @@
+.chatboxitem-container {
+    width: 100%;
+    height: 4rem;
+    background-color: var(--gray-300);
+    border: 0.5px solid black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    .chatboxitem-name {
+        font-size: var(--text-sm);
+    }
+}
