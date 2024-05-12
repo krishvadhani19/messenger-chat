@@ -10,7 +10,7 @@ export const useOtherUser = (users: User[]) => {
       (user: User) => user?.id !== currentUser?.id
     );
 
-    return otherUsers;
+    return otherUsers?.[0];
   }, [users, currentUser]);
 
   return otherUsers;
