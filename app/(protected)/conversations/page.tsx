@@ -1,15 +1,15 @@
 "use client";
 
-// file imports
+// module imports
 import { useQuery } from "@tanstack/react-query";
 
 // file imports
 import "./page.scss";
 import ActiveChatSection from "@/components/custom/ActiveChatSection/ActiveChatSection";
 import { getChats } from "@/server/actions/getChats";
-import ChatList from "@/components/custom/ChatList/ChatList";
 import { FullConversationType } from "@/types";
 import ChatBoxItem from "@/components/custom/ChatBoxItem/ChatBoxItem";
+import { TiUserAdd } from "react-icons/ti";
 
 const ConversationsPage = () => {
   const { isPending, data: chatList } = useQuery({
@@ -23,13 +23,23 @@ const ConversationsPage = () => {
 
   return (
     <>
-      <div className="conversations-chats-section">
+      <div className="conversations-page-chats-section">
+        <div className="conversations-page-chats-section-heading">
+          <div className="">Messages</div>
+
+          <div
+            className="conversations-page-chats-section-add-user"
+            onClick={() => {}}
+          >
+            <TiUserAdd size={24} />
+          </div>
+        </div>
         {chatList?.map((chatItem: FullConversationType, index: number) => (
           <ChatBoxItem key={index} chat={chatItem} />
         ))}
       </div>
 
-      <div className="conversations-active-chat-section">
+      <div className="conversations-page-active-chat-section">
         <ActiveChatSection />
       </div>
     </>

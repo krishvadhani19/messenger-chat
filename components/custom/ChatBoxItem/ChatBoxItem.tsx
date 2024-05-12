@@ -73,7 +73,11 @@ const ChatBoxItem = ({ chat }: ChatBoxItemPropType) => {
         />
       </div>
 
-      <div className="chatboxitem-name">{otherUser?.name}</div>
+      <div className="chatboxitem-desc">
+        <div className="chatboxitem-name">{otherUser?.name}</div>
+
+        <div className="chatboxitem-last-message">{lastMessageText}</div>
+      </div>
     </div>
   );
 };

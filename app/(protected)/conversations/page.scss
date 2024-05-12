@@ -1,12 +1,39 @@
-.conversations-chats-section {
+.conversations-page-chats-section {
     width: 25%;
     height: 100%;
     overflow-y: auto;
     background-color: var(--gray-100);
     border: 0.5px solid var(--gray-300);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+
+    .conversations-page-chats-section-heading {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: var(--text-xl);
+        font-weight: 700;
+        color: var(--gray-950);
+        padding: 0 1rem;
+
+        .conversations-page-chats-section-add-user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            background-color: var(--gray-300);
+            border: 0.25px solid var(--gray-400);
+        }
+    }
 }
 
-.conversations-active-chat-section {
+.conversations-page-active-chat-section {
     width: 72%;
     height: 100%;
     background-color: var(--gray-300);

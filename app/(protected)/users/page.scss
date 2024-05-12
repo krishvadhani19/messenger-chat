@@ -4,6 +4,30 @@
     overflow-y: auto;
     background-color: var(--gray-100);
     border: 0.5px solid var(--gray-300);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+
+    .userspage-chats-section-heading {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: var(--text-xl);
+        font-weight: 700;
+        color: var(--gray-950);
+        padding: 0 1rem;
+
+        .userspage-chats-section-add-user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+        }
+    }
 }
 
 .userspage-active-chat-section {
