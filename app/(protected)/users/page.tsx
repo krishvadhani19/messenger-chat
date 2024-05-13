@@ -2,6 +2,7 @@
 
 // import modules
 import { useQuery } from "@tanstack/react-query";
+import { useShallow } from "zustand/react/shallow";
 
 // import files
 import "./page.scss";
@@ -10,6 +11,10 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { getAllUsers } from "@/server/actions/getAllUsers";
 import UserBoxItem from "@/components/custom/UserBoxItem/UserBoxItem";
 import { TiUserAdd } from "react-icons/ti";
+import {
+  ActiveChatStore,
+  useActiveChatStore,
+} from "@/stores/useActiveChatStore";
 
 const UsersPage = () => {
   const user = useCurrentUser();
@@ -17,6 +22,8 @@ const UsersPage = () => {
     queryKey: ["all-user-list"],
     queryFn: async () => await getAllUsers(user?.email as string),
   });
+
+  const [activeChat] = useActiveChatStore(useShallow((s) => [s.activeChat]));
 
   if (isPending) {
     <div>Loading chats</div>;
@@ -37,9 +44,11 @@ const UsersPage = () => {
         ))}
       </div>
 
-      <div className="userspage-active-chat-section">
-        <ActiveChatSection />
-      </div>
+      {activeChat && (
+        <div className="userspage-active-chat-section">
+          <ActiveChatSection />
+        </div>
+      )}
     </>
   );
 };
