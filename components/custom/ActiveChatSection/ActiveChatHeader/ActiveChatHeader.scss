@@ -5,4 +5,38 @@
     padding: 1rem;
     border: 0.5px solid var(--gray-300);
     background-color: var(--white);
+    box-shadow:
+        0 1px 3px 0 rgb(0 0 0 / 0.1),
+        0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+    .active-chat-header-avatar {
+        flex: 0;
+        width: 32;
+        height: 32;
+    }
+
+    .active-chat-header-desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+        flex: 1;
+
+        .active-chat-header-name {
+            font-size: var(--text-base);
+            font-weight: 600;
+        }
+
+        .active-chat-header-status {
+            font-size: var(--text-xs);
+            font-weight: 400;
+            color: var(--gray-400);
+        }
+    }
+
+    .active-chat-header-three-dots {
+        flex: 0;
+        color: var(--primary-blue);
+        cursor: pointer;
+    }
 }

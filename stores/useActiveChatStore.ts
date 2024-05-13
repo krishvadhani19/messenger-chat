@@ -1,17 +1,17 @@
-import { Conversation } from "@prisma/client";
+import { FullConversationType } from "@/types";
 import { create } from "zustand";
 
 type State = {
-  activeChat: Conversation | null;
+  activeChat: FullConversationType | null;
 };
 
 type Action = {
-  setActiveChat: (conversation: Conversation | null) => void;
+  setActiveChat: (conversation: FullConversationType | null) => void;
 };
 
 export const useActiveChatStore = create<State & Action>((set) => ({
   activeChat: null,
-  setActiveChat: (conversation: Conversation | null) => {
+  setActiveChat: (conversation: FullConversationType | null) => {
     set({ activeChat: conversation });
   },
 }));
