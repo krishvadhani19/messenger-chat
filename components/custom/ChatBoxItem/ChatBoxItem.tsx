@@ -20,6 +20,7 @@ const ChatBoxItem = ({ chat }: ChatBoxItemPropType) => {
   const otherUser = useOtherUser(chat?.users);
 
   const handleClick = useCallback(() => {
+    console.log({ chat });
     ActiveChatStore().setActiveChat(chat);
   }, [chat]);
 

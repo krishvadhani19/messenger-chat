@@ -1,11 +1,11 @@
 "use server";
 
-import { auth } from "@/auth";
 import { prismadb } from "@/lib/prismadb";
+import { getCurrentUser } from "./getCurrentUser";
 
 export const getChats = async () => {
-  const session = await auth();
-  const currentUserId = session?.user?.id;
+  const currentUser = await getCurrentUser();
+  const currentUserId = currentUser?.id;
 
   if (!currentUserId) {
     return [];
@@ -26,6 +26,7 @@ export const getChats = async () => {
       include: {
         users: true,
 
+        // for last seen and last message
         messages: {
           include: {
             sender: true,
