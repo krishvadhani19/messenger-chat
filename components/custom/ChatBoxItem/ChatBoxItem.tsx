@@ -10,6 +10,7 @@ import { ActiveChatStore } from "@/stores/useActiveChatStore";
 import { FullConversationType } from "@/types";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { useOtherUser } from "@/hooks/useOtherUser";
+import classNames from "classnames";
 
 interface ChatBoxItemPropType {
   chat: FullConversationType;
@@ -64,7 +65,12 @@ const ChatBoxItem = ({ chat }: ChatBoxItemPropType) => {
   }, [lastMessage]);
 
   return (
-    <div onClick={handleClick} className="chatboxitem-container">
+    <div
+      onClick={handleClick}
+      className={classNames("chatboxitem-container", {
+        isActive: chat?.id === ActiveChatStore()?.activeChat?.id,
+      })}
+    >
       <div className="chatboxitem-image">
         <Image
           src={otherUser?.image || "/logo.png"}

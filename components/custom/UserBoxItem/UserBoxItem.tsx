@@ -2,11 +2,12 @@
 import { useCallback } from "react";
 import axios from "axios";
 import Image from "next/image";
+import classNames from "classnames";
+import { User } from "@prisma/client";
 
 // import files
 import "./UserBoxItem.scss";
 import { ActiveChatStore } from "@/stores/useActiveChatStore";
-import { User } from "@prisma/client";
 
 interface ChatBoxItemPropType {
   user: User;
@@ -24,12 +25,17 @@ const UserBoxItem = ({ user }: ChatBoxItemPropType) => {
   }, [setActiveChat, user]);
 
   return (
-    <div onClick={handleClick} className="chatboxitem-container">
-      <div className="chatboxitem-image">
+    <div
+      onClick={handleClick}
+      className={classNames("chatboxitem-container", {
+        isActive: user?.id === ActiveChatStore()?.activeChat?.id,
+      })}
+    >
+      <div className="userboxitem-image">
         <Image src={"/logo.png"} alt={`${user?.name}`} width={32} height={32} />
       </div>
 
-      <div className="chatboxitem-name">{user?.name}</div>
+      <div className="userboxitem-name">{user?.name}</div>
     </div>
   );
 };

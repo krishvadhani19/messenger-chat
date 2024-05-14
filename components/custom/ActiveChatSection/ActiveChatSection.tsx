@@ -5,13 +5,16 @@
 // import files
 import "./ActiveChatSection.scss";
 import ActiveChatHeader from "./ActiveChatHeader/ActiveChatHeader";
+import ChatInput from "./ChatInput/ChatInput";
 
 const ActiveChat = () => {
   return (
     <div className="active-chat-section-container">
       <ActiveChatHeader />
 
-      <div className=""></div>
+      <div className="active-chat-section-messages"></div>
+
+      <ChatInput />
     </div>
   );
 };

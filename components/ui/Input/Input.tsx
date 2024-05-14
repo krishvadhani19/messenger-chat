@@ -1,14 +1,14 @@
 "use client";
 
 // Module Imports
-import { useId } from "react";
+import { useCallback, useId } from "react";
 
 // File Imports
 import "./Input.scss";
 
 type InputProps = {
-  label: string;
-  required: boolean;
+  label?: string;
+  required?: boolean;
   onChange: any;
   value: string;
   disabled?: boolean;
@@ -22,20 +22,25 @@ const Input = ({
   value,
   onChange,
   placeholder,
-  type,
+  type = "text",
   disabled,
 }: InputProps) => {
   const id = useId();
 
-  const handleChange = (e: any) => {
-    onChange(e?.target?.value);
-  };
+  const handleChange = useCallback(
+    (e: any) => {
+      onChange(e?.target?.value);
+    },
+    [onChange]
+  );
 
   return (
     <div className="input-container">
-      <label htmlFor={id} className="input-container-label">
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className="input-container-label">
+          {label}
+        </label>
+      )}
 
       <input
         className="input-container-input-field"
