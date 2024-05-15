@@ -22,14 +22,14 @@ const ChatInput = () => {
 
       <div className="chat-input-container-input-area">
         <Input
-          placeholder="Start chatting"
+          placeholder="Write a message"
           value={chatInput!}
           onChange={handleChange}
         />
       </div>
 
       <div className="chat-input-container-send-button" onClick={() => {}}>
-        <MdSend size={22} />
+        <MdSend size={18} />
       </div>
     </div>
   );
