@@ -44,8 +44,26 @@ export const POST = async (request: Request) => {
 
     const updatedConversation = await prismadb.conversation.update({
       where: { id: conversationId },
-      data: { lastMessageAt: new Date() },
+      data: {
+        lastMessageAt: new Date(),
+        messages: {
+          connect: {
+            id: newMessage?.id,
+          },
+        },
+      },
+
+      include: {
+        users: true,
+        messages: {
+          include: {
+            seen: true,
+          },
+        },
+      },
     });
+
+    return NextResponse.json(newMessage);
   } catch (error) {
     console.log({ error });
 

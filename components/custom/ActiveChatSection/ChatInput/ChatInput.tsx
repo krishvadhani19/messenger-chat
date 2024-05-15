@@ -3,16 +3,30 @@
 // import modules
 import { MdAddToPhotos, MdSend } from "react-icons/md";
 import { useCallback, useState } from "react";
+import axios from "axios";
 
 // import files
 import "./ChatInput.scss";
-
 import Input from "@/components/ui/Input/Input";
+import { ActiveChatStore } from "@/stores/useActiveChatStore";
 
 const ChatInput = () => {
   const [chatInput, setChatInput] = useState<string>();
 
   const handleChange = useCallback((value: string) => setChatInput(value), []);
+
+  const handleSendMessage = useCallback(async () => {
+    if (!chatInput?.trim()) {
+      return;
+    }
+
+    await axios.post("/api/messages", {
+      message: chatInput,
+      conversationId: ActiveChatStore()?.activeChat?.id,
+    });
+
+    setChatInput("");
+  }, [chatInput]);
 
   return (
     <div className="chat-input-container">
@@ -28,7 +42,10 @@ const ChatInput = () => {
         />
       </div>
 
-      <div className="chat-input-container-send-button" onClick={() => {}}>
+      <div
+        className="chat-input-container-send-button"
+        onClick={handleSendMessage}
+      >
         <MdSend size={18} />
       </div>
     </div>
