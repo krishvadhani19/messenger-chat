@@ -1,9 +1,9 @@
 "use client";
 
 // import modules
+import { useState } from "react";
 
 // import files
-import { useState } from "react";
 import "./ActiveChatBody.scss";
 import { FullConversationType } from "@/types";
 
@@ -14,7 +14,7 @@ interface ActiveChatBodyProps {
 const ActiveChatBody = ({ activeChat }: ActiveChatBodyProps) => {
   const [messages, setMessages] = useState();
 
-  return <div>ActiveChatBody</div>;
+  return <div className="active-chat-body-container">ActiveChatBody</div>;
 };
 
 export default ActiveChatBody;
