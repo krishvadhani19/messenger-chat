@@ -16,9 +16,7 @@ const ActiveChat = () => {
     <div className="active-chat-section-container">
       <ActiveChatHeader />
 
-      <div className="active-chat-section-messages">
-        <ActiveChatBody activeChat={activeChat!} />
-      </div>
+      <ActiveChatBody activeChat={activeChat!} />
 
       <ChatInput />
     </div>
