@@ -5,14 +5,18 @@
 // import files
 import "./ActiveChatSection.scss";
 import ActiveChatHeader from "./ActiveChatHeader/ActiveChatHeader";
-import ChatInput from "./ChatInput/ChatInput";
+import ChatInput from "./ActiveChatInput/ActiveChatInput";
+import ActiveChatBody from "./ActiveChatBody/ActiveChatBody";
+import { useActiveChatStore } from "@/stores/useActiveChatStore";
 
 const ActiveChat = () => {
+  const activeChat = useActiveChatStore((s) => s.activeChat);
+
   return (
     <div className="active-chat-section-container">
       <ActiveChatHeader />
 
-      <div className="active-chat-section-messages"></div>
+      <ActiveChatBody activeChat={activeChat!} />
 
       <ChatInput />
     </div>

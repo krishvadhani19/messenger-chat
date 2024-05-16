@@ -12,7 +12,11 @@
 
     .chat-input-container-add-button {
         flex: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
+        border: none;
     }
 
     .chat-input-container-input-area {
@@ -25,7 +29,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        padding: 0.3rem 0.3rem 0.3rem 0.5rem;
+        padding: 0.3rem;
         cursor: pointer;
         color: var(--white);
         background-color: var(--primary-blue);

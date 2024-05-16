@@ -7,7 +7,7 @@ import axios from "axios";
 import { CldUploadButton } from "next-cloudinary";
 
 // import files
-import "./ChatInput.scss";
+import "./ActiveChatInput.scss";
 import Input from "@/components/ui/Input/Input";
 import { ActiveChatStore } from "@/stores/useActiveChatStore";
 
@@ -42,15 +42,14 @@ const ChatInput = () => {
 
   return (
     <div className="chat-input-container">
-      <div className="chat-input-container-add-button">
-        <CldUploadButton
-          options={{ maxFiles: 1 }}
-          onSuccess={handleUpload}
-          uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
-        >
-          <MdAddToPhotos size={22} />
-        </CldUploadButton>
-      </div>
+      <CldUploadButton
+        options={{ maxFiles: 1 }}
+        onSuccess={handleUpload}
+        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+        className="chat-input-container-add-button"
+      >
+        <MdAddToPhotos size={22} />
+      </CldUploadButton>
 
       <div className="chat-input-container-input-area">
         <Input
