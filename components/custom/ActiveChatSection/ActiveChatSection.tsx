@@ -10,13 +10,11 @@ import ActiveChatBody from "./ActiveChatBody/ActiveChatBody";
 import { useActiveChatStore } from "@/stores/useActiveChatStore";
 
 const ActiveChat = () => {
-  const activeChat = useActiveChatStore((s) => s.activeChat);
-
   return (
     <div className="active-chat-section-container">
       <ActiveChatHeader />
 
-      <ActiveChatBody activeChat={activeChat!} />
+      <ActiveChatBody />
 
       <ChatInput />
     </div>

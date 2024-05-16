@@ -73,6 +73,13 @@ export const POST = async (request: Request) => {
       // populating user as in while fetching data you get entire User and not just id
       include: {
         users: true,
+
+        messages: {
+          include: {
+            sender: true,
+            seen: true,
+          },
+        },
       },
     });
 
