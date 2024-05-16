@@ -4,6 +4,7 @@
 import { MdAddToPhotos, MdSend } from "react-icons/md";
 import { useCallback, useState } from "react";
 import axios from "axios";
+import { CldUploadButton } from "next-cloudinary";
 
 // import files
 import "./ChatInput.scss";
@@ -28,10 +29,27 @@ const ChatInput = () => {
     setChatInput("");
   }, [chatInput]);
 
+  const handleUpload = useCallback(async (imageData: any) => {
+    if (!imageData) {
+      return;
+    }
+
+    await axios.post("/api/messages", {
+      image: imageData?.info?.secure_url,
+      conversationId: ActiveChatStore()?.activeChat?.id,
+    });
+  }, []);
+
   return (
     <div className="chat-input-container">
-      <div className="chat-input-container-add-button" onClick={() => {}}>
-        <MdAddToPhotos size={22} />
+      <div className="chat-input-container-add-button">
+        <CldUploadButton
+          options={{ maxFiles: 1 }}
+          onSuccess={handleUpload}
+          uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET}
+        >
+          <MdAddToPhotos size={22} />
+        </CldUploadButton>
       </div>
 
       <div className="chat-input-container-input-area">
