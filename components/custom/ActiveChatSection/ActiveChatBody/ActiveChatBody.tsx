@@ -1,22 +1,58 @@
 "use client";
 
 // import modules
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 // import files
 import "./ActiveChatBody.scss";
-import { FullConversationType } from "@/types";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import classNames from "classnames";
 import { useActiveChatStore } from "@/stores/useActiveChatStore";
+import Image from "next/image";
 
-interface ActiveChatBodyProps {
-  activeChat: FullConversationType;
+interface MessageItemProps {
+  sender: any;
+  isImage: Boolean;
+  message: string;
+  isMessageMine: Boolean;
 }
+
+const MessageItem = ({
+  sender,
+  isImage,
+  message,
+  isMessageMine,
+}: MessageItemProps) => {
+  return (
+    <div
+      className={classNames("active-chat-body-message-item", {
+        isMessageMine,
+      })}
+    >
+      <div className="active-chat-body-message-item-desc">
+        <Image
+          src={sender?.image || "/logo.png"}
+          alt=""
+          width={32}
+          height={32}
+        />
+
+        <div className="active-chat-body-message-item-name">
+          {isMessageMine ? "You" : sender?.name}
+        </div>
+      </div>
+
+      {!isImage && (
+        <div className="active-chat-body-message-item-content">{message}</div>
+      )}
+    </div>
+  );
+};
 
 const ActiveChatBody = () => {
   const activeChat = useActiveChatStore((s) => s.activeChat);
   const currentUser = useCurrentUser();
+
   const messages = useMemo(() => {
     return activeChat?.messages;
   }, [activeChat?.messages]);
@@ -28,14 +64,13 @@ const ActiveChatBody = () => {
         const isImage = !!messageItem?.image;
 
         return (
-          <div
+          <MessageItem
             key={index}
-            className={classNames("active-chat-body-message-item", {
-              isMessageMine,
-            })}
-          >
-            {!isImage ? messageItem?.body : "hello"}
-          </div>
+            sender={messageItem?.sender}
+            isImage={isImage}
+            message={messageItem?.body!}
+            isMessageMine={isMessageMine}
+          />
         );
       })}
     </div>

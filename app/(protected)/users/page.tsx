@@ -11,10 +11,7 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { getAllUsers } from "@/server/actions/getAllUsers";
 import UserBoxItem from "@/components/custom/UserBoxItem/UserBoxItem";
 import { TiUserAdd } from "react-icons/ti";
-import {
-  ActiveChatStore,
-  useActiveChatStore,
-} from "@/stores/useActiveChatStore";
+import { useActiveChatStore } from "@/stores/useActiveChatStore";
 
 const UsersPage = () => {
   const user = useCurrentUser();
@@ -39,6 +36,7 @@ const UsersPage = () => {
             <TiUserAdd size={24} />
           </div>
         </div>
+
         {allUserList?.map((item, index) => (
           <UserBoxItem user={item} key={index} />
         ))}
