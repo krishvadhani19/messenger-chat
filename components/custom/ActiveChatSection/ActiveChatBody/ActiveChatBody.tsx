@@ -14,6 +14,7 @@ interface MessageItemProps {
   sender: any;
   isImage: Boolean;
   message: string;
+  messageTimeStamp: Date;
   isMessageMine: Boolean;
 }
 
@@ -22,6 +23,7 @@ const MessageItem = ({
   isImage,
   message,
   isMessageMine,
+  messageTimeStamp,
 }: MessageItemProps) => {
   return (
     <div
@@ -38,11 +40,20 @@ const MessageItem = ({
         />
 
         <div className="active-chat-body-message-item-name">
-          {isMessageMine ? "You" : sender?.name}
+          {isMessageMine ? "You" : sender?.name}{" "}
+          {messageTimeStamp.getHours() + ":" + messageTimeStamp.getMinutes()}
         </div>
       </div>
 
-      {!isImage && (
+      {isImage ? (
+        <Image
+          src={message}
+          alt=""
+          width={300}
+          height={200}
+          className="active-chat-body-message-item-content"
+        />
+      ) : (
         <div className="active-chat-body-message-item-content">{message}</div>
       )}
     </div>
@@ -64,13 +75,20 @@ const ActiveChatBody = () => {
         const isImage = !!messageItem?.image;
 
         return (
-          <MessageItem
+          <div
+            className={classNames("active-chat-body-message-item-container", {
+              isMessageMine,
+            })}
             key={index}
-            sender={messageItem?.sender}
-            isImage={isImage}
-            message={messageItem?.body!}
-            isMessageMine={isMessageMine}
-          />
+          >
+            <MessageItem
+              isImage={isImage}
+              sender={messageItem?.sender}
+              message={isImage ? messageItem?.image! : messageItem?.body!}
+              messageTimeStamp={messageItem?.createdAt}
+              isMessageMine={isMessageMine}
+            />
+          </div>
         );
       })}
     </div>

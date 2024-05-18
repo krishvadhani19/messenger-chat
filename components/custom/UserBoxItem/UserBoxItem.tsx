@@ -21,8 +21,6 @@ const UserBoxItem = ({ user }: ChatBoxItemPropType) => {
       userId: user?.id,
     });
 
-    console.log({ conversation });
-
     setActiveChat(conversation);
   }, [setActiveChat, user]);
 
