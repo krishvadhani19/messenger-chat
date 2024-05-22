@@ -1,14 +1,15 @@
 "use client";
 
 // import modules
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import Image from "next/image";
+import classNames from "classnames";
+import axios from "axios";
 
 // import files
 import "./ActiveChatBody.scss";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import classNames from "classnames";
 import { useActiveChatStore } from "@/stores/useActiveChatStore";
-import Image from "next/image";
 
 interface MessageItemProps {
   sender: any;
@@ -64,9 +65,15 @@ const ActiveChatBody = () => {
   const activeChat = useActiveChatStore((s) => s.activeChat);
   const currentUser = useCurrentUser();
 
+  const conversationId = activeChat?.id;
+
   const messages = useMemo(() => {
     return activeChat?.messages;
   }, [activeChat?.messages]);
+
+  useEffect(() => {
+    axios.post(`/api/conversations/${conversationId}/seen`, { conversationId });
+  }, [conversationId]);
 
   return (
     <div className="active-chat-body-container">

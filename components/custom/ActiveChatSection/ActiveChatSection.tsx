@@ -7,7 +7,6 @@ import "./ActiveChatSection.scss";
 import ActiveChatHeader from "./ActiveChatHeader/ActiveChatHeader";
 import ChatInput from "./ActiveChatInput/ActiveChatInput";
 import ActiveChatBody from "./ActiveChatBody/ActiveChatBody";
-import { useActiveChatStore } from "@/stores/useActiveChatStore";
 
 const ActiveChat = () => {
   return (
