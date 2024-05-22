@@ -27,7 +27,7 @@ const UserBoxItem = ({ user }: ChatBoxItemPropType) => {
   return (
     <div
       onClick={handleClick}
-      className={classNames("chatboxitem-container", {
+      className={classNames("userboxitem-container", {
         isActive: user?.id === ActiveChatStore()?.activeChat?.id,
       })}
     >
