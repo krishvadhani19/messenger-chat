@@ -28,12 +28,6 @@ const ActiveChatHeader = () => {
 
   return (
     <>
-      <ProfileDrawer
-        isOpen={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        data={activeChat!}
-      />
-
       <div className="active-chat-header-container">
         <div className="active-chat-header-avatar">
           <Image src="/logo.png" alt="image" width={32} height={32} />
@@ -54,6 +48,12 @@ const ActiveChatHeader = () => {
           <BsThreeDots size={22} />
         </div>
       </div>
+
+      {/* <ProfileDrawer
+        isOpen={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        data={activeChat!}
+      /> */}
     </>
   );
 };
